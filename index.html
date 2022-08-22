@@ -206,11 +206,12 @@
 
                <!-- Backpack Section Start  -->
 
-               <h2 class="my-5">Backpack</h2>
+             <section id="backpack">
+              <h2 class="my-5">Backpack</h2>
               <div class="row row-cols-lg-3 row-cols-md-2 row-col-sm-1 row-col-1 g-4 mb-5" id="Backpack">
                 <div class="col">
                   <div class="card">
-                    <img src="images/bags/bag-1.png" class="card-img-top" alt="...">
+                    <img id = "one" onmouseover = "changePic()" onmouseout = "staySame()" src="images/bags/bag-1.png" class="card-img-top bag" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Red Laltu Bag</h5>
                       <h1>$160</h1>
@@ -221,7 +222,7 @@
                 </div>
                 <div class="col">
                   <div class="card">
-                    <img src="images/bags/bag-2.png" class="card-img-top" alt="...">
+                    <img id = "two" onmouseover = "chagePic2 ()" onmouseout = "staySame2()" src="images/bags/bag-2.png" class="card-img-top bag" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Nike 360</h5>
                       <h1>$160</h1>
@@ -232,7 +233,7 @@
                 </div>
                 <div class="col">
                   <div class="card">
-                    <img src="images/bags/bag-3.png" class="card-img-top" alt="...">
+                    <img onmouseover = "chagePic2 ()" src="images/bags/bag-3.png" class="card-img-top bag" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Red Airmax</h5>
                       <h1>$160</h1>
@@ -245,6 +246,7 @@
                
                 
               </div>
+             </section>
                <!-- Bacpack Section End -->
 
 
@@ -258,12 +260,12 @@
           <form>
             <div class="mb-3">
               
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <input id= "input-field" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
               
             </div>
             
           
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button id = "submit-btn" onclick="clickOnButton()" type="submit" class="btn btn-primary" disabled>Submit</button>
           </form>
           </div>
         </section>
@@ -274,5 +276,97 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+   <script src="js/panda.js"></script>
   </body>
 </html>
+
+<script>
+  //Task 1 : CHhang the color of all h2 tag from the website
+const allh2 = document.getElementsByTagName ('h2');
+for(const h2 of allh2){
+    console.log(h2);
+    h2.style.color = 'lightblue'
+}
+//Task 2 : Change backgorund color of the backpack section to tomato
+const backpackSection = document.getElementById('backpack');
+console.log(backpackSection);
+backpackSection.style.backgroundColor = 'tomato ';
+
+//Task 3 : Put 30 px borderradius on all card class using js
+const cards = document.getElementsByClassName('card');
+console.log(cards);
+for (const card of cards) {
+ console.log(card);
+ card.style.borderRadius = '30px';
+}
+
+//Task 4 : Use onclick eventhandler on a button
+
+function clickOnButton(){
+   console.log("nice button");
+}
+
+//Task 5 : Hide buy now button when you click on the buy now button
+
+const allBuyNowButton = document.getElementsByClassName ('btn');
+console.log(allBuyNowButton);
+for (const button of allBuyNowButton) {
+    console.log(button);
+    button.addEventListener ('click',function(){
+        button.style.display = 'none';
+
+    })    
+
+
+    //Task 6 : Make the submit button disabled in some special case and sometimes make it active
+
+
+    
+}
+
+
+
+    function changePic (){
+      const bag1 = document.getElementById ('one');
+      bag1.src="images/bags/bag-2.png";
+
+
+
+
+        }
+function chagePic2 (){
+    const bag2 = document.getElementById ('two');
+    bag2.src="images/bags/bag-3.png";
+    
+}
+function staySame (){
+    const bag1 = document.getElementById ('one');
+    bag1.src="images/bags/bag-1.png";
+}
+function staySame2 (){
+    const bag2 = document.getElementById ('two');
+    bag2.src="images/bags/bag-2.png";
+   
+    
+}
+
+
+
+const inputField =  document.getElementById('input-field');
+   console.log(inputField);
+   inputField.addEventListener('keyup',function(event){
+   const inputText = event.target.value;
+   console.log(inputText);
+   if (inputText === "email") {
+    const submitBtn = document.getElementById ('submit-btn');
+    submitBtn.removeAttribute ("disabled");
+   }
+   else {
+    submitBtn.setAttribute ("disabled",true);
+    event.target.value = "";
+   }
+   })
+
+
+</script>
+
